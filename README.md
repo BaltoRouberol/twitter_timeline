@@ -1,7 +1,7 @@
 ## Retrieve tweets from your home timeline
-This directory contains python scripts allowing you to fetch tweets from
+Regularly fetch tweets from
 your twitter timeline, using the [GET statuses/home_timeline](https://dev.twitter.com/docs/api/1.1/get/statuses/home_timeline)
-API and store the results in a mongoDB database.
+API and store them in a mongoDB database.
 
 ### Important
 Before running the `retrieve.py` script, you need to create a twitter app at [https://dev.twitter.com/apps](https://dev.twitter.com/apps)
