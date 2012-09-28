@@ -1,0 +1,14 @@
+*~
+*.pyc
+
+# == Virtualenv files and folders ==
+bin/
+include/
+lib/
+local/
+
+# == Project specific files ==
+scripts/retrieve_tweets.log
+twitter/config.py
+backup/
+INSTALL.txt
