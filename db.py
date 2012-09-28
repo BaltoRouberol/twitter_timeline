@@ -6,9 +6,9 @@ and this file only.
 
 import pymongo
 
-import config as cf
-
 from pymongo.errors import PyMongoError
+
+import config as cf
 
 
 class DBError(PyMongoError):

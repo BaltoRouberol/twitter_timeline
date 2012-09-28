@@ -4,7 +4,6 @@ Tests for the tweets retrieval suite.
 
 import unittest
 
-import config as cf
 import twitter
 import db
 
