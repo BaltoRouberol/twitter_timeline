@@ -7,7 +7,7 @@
 
 
 ABSPATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )" # absolute path of the directory containing this script
-ROOT_DIR="$ABSPATH/../"  # directory containing the retrieval python script
+ROOT_DIR="$ABSPATH/.."  # directory containing the retrieval python script
 BIN="$ROOT_DIR/bin"  # virtualenv bin folder
 PYTHON="$BIN/python"  # virtualenv python binary
 
@@ -16,5 +16,5 @@ PYTHON="$BIN/python"  # virtualenv python binary
 source "$BIN"/activate
 
 # execute retrieve.py script (retrieve and store new tweets)
-cd "ROOT_DIR"
+cd "$ROOT_DIR"
 $PYTHON retrieve.py
