@@ -9,6 +9,6 @@ local/
 
 # == Project specific files ==
 scripts/retrieve_tweets.log
-twitter/config.py
+config.py
 backup/
 INSTALL.txt
