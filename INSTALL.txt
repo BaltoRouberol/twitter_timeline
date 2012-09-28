@@ -1,0 +1,48 @@
+1 - install the python-pip package, using your system package manager (apt, yum...):
+
+2 - Using pip, install virtualenv
+$ pip install virtualenv
+NB: note that on some systems, you have to use the command `pip-python`
+
+3 - Install mongoDB from http://www.mongodb.org/downloads
+
+4 - Run the mongoDB daemon
+$ mongod
+
+5 - Clone the repository
+$ git clone git@github.com:BaltoRouberol/twitter_timeline.git
+
+6 - Create a new virtualenv using the default python interpreter, and activate it:
+$ cd twitter_timeline
+$ virtualenv -p /usr/bin/python .
+$ source bin/activate
+
+7 - Install all dependencies stored in the requirements.txt file
+$ pip install -r requirements.txt
+
+8 - Add a config.py file in the twitter_timeline/ directory, defining the project
+configuration, as explained in the README.md file
+
+9 - Run the project unit tests
+$ python test_twitter_retrieve.py
+
+These tests ensure that the twitter API can be reached, that the extracted tweets
+have the correct format and can correctly be inserted in the database.
+
+You should see an output similar to:
+....
+------------------------------------
+Ran 4 tests in 6.804s
+
+OK
+
+10 - Schedule scripts call.
+Add these lines to your /etc/crontab file
+Note: Don't forget to set the SCRIPTS path, and the user name, and 
+to adjust the cron timing to your taste.
+
+SCRIPTS=path/to/twitter_timeline/scripts
+# Backup the database
+00 12 * * * USERNAME bash $SCRIPTS/backup.sh 2>/dev/null
+# Retrieve tweets from home timeline
+01 * * * * USERNAME bash $SCRIPTS/retrieve_tweets.sh 2>/dev/null
