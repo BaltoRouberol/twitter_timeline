@@ -1,12 +1,12 @@
 ### retrieve_tweets.sh
-This bash script executes the `../twitter/retrieve.py` python script, 
+This bash script executes the `../retrieve.py` python script, 
 which retrieves tweets from the user's timeline, and store them in
 a database.
 
 
 ### backup.sh
-This bash script creates a backup of the mongoDB database, and store it in a 
-`../backup/$DATE-$HOUR` directory.
+This bash script creates a backup of the [mongoDB](http://www.mongodb.org/) database, and store it in a 
+`./backup/$DATE-$HOUR` directory.
 
 
 ### Planned execution
