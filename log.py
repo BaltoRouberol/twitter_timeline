@@ -21,7 +21,7 @@ def file_console_log():
     formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
 
     # File handler: only display events with level >= INFO
-    log_path = join(dirname(__file__), '..', 'scripts', 'retrieve_tweets.log')
+    log_path = join(dirname(__file__), 'scripts', 'retrieve_tweets.log')
     file_handler = logging.FileHandler(log_path)
     file_handler.setLevel(logging.INFO)  # debug messages will not be logged
     file_handler.setFormatter(formatter)
