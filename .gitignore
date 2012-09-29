@@ -11,3 +11,6 @@ local/
 scripts/retrieve_tweets.log
 config.py
 backup/
+
+# == coverage.py ==
+.coverage
