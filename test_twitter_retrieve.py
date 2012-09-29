@@ -11,29 +11,24 @@ import db
 class TwitterAPITest(unittest.TestCase):
     """ Tests ensuring that the Twitter API wrapper behaves correctly. """
 
-    def setUp(self):
-        self.tw = twitter.API()
-
-    def tearDown(self):
-        pass
-
-    def test_api_connectcion(self):
+    def test_api_connection(self):
         """ Test that the API can be reached and user is correclt autenticated.
         """
-        self.assertEqual(self.tw.api.me().name, "Balthazar Rouberol")
+        api = twitter.login()
+        self.assertEqual(api.me().name, "Balthazar Rouberol")
 
     def test_home_timeline(self):
         """ Test that the `twitter.API.home_timeline` returns the expected
             number of tweets.
         """
-        timeline = self.tw.home_timeline(count=2)
+        timeline = twitter.home_timeline(count=2)
         self.assertEqual(len(timeline), 2)
 
     def test_tweet_structure(self):
         """ Test the structure of a tweet (stored as a Python dictionary).
             Ensure that all mandatory keys are presents.
         """
-        tweet = self.tw.home_timeline(count=1)[0]
+        tweet = twitter.home_timeline(count=1)[0]
         self.assertTrue("source" in tweet)
         self.assertNotEqual(tweet['source'], '')
         self.assertTrue("source_url" in tweet)
@@ -56,14 +51,13 @@ class MongoTest(unittest.TestCase):
     def setUp(self):
         self.connection = db.connect()
         self.tweets_collection = db.twitter_collection('test', 'test')
-        self.tw = twitter.API()
 
     def tearDown(self):
         self.connection.drop_database('test')
 
     def test_insertion_mongo(self):
         """ Test that fetched tweets are correclty inserted in mongo. """
-        timeline = self.tw.home_timeline()
+        timeline = twitter.home_timeline()
         for tweet in timeline:
             db.insert(tweet, self.tweets_collection)
         self.assertEqual(db.size(self.tweets_collection), len(timeline))

@@ -20,7 +20,7 @@ def main():
     # Retrieve tweets from user timeline and store new ones in database
     # If any error occurs, log it in log file
     try:
-        timeline_tweets = twitter.API().home_timeline()
+        timeline_tweets = twitter.home_timeline()
     except Exception, error:
         logger.error(traceback.format_exc()[:-1])  # log error
         raise error
