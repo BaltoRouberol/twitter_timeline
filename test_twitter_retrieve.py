@@ -50,17 +50,21 @@ class MongoTest(unittest.TestCase):
 
     def setUp(self):
         self.connection = db.connect()
-        self.tweets_collection = db.twitter_collection('test', 'test')
+        self.tweets_collection = db.twitter_collection('test_db', 'test_collection')
 
     def tearDown(self):
         self.connection.drop_database('test')
 
     def test_insertion_mongo(self):
-        """ Test that fetched tweets are correclty inserted in mongo. """
+        """ Tests that fetched tweets are correclty inserted in mongo. """
         timeline = twitter.home_timeline()
         for tweet in timeline:
             db.insert(tweet, self.tweets_collection)
         self.assertEqual(db.size(self.tweets_collection), len(timeline))
+
+    def test_full_name(self):
+        """ Tests that the `db.name` function returns {db_name}.{collection_name}."""
+        self.assertEqual(db.name(self.tweets_collection), "test_db.test_collection")
 
 
 if __name__ == '__main__':
