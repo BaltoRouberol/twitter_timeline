@@ -52,6 +52,6 @@ To ensure readability, we divided the logic of the operation between several scr
 * `log.py` Configuration of the logger.
 * `retrieve.py` Main script patching-up all the retrieval and DB-storage operations.
     Execute it with the command
-    ```bash
+    ```
     $ python retrieve.py
     ```
