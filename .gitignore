@@ -10,7 +10,8 @@ local/
 # == Project specific files ==
 scripts/retrieve_tweets.log
 config.py
-backup/
+scripts/backup/
 
 # == coverage.py ==
 .coverage
+htmlcov
