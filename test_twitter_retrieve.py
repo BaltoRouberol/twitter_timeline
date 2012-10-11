@@ -53,7 +53,7 @@ class MongoTest(unittest.TestCase):
         self.tweets_collection = db.twitter_collection('test_db', 'test_collection')
 
     def tearDown(self):
-        self.connection.drop_database('test')
+        self.connection.drop_database('test_db')
 
     def test_insertion_mongo(self):
         """ Tests that fetched tweets are correclty inserted in mongo. """
